@@ -1,0 +1,348 @@
+
+:root{
+	--circle-width: 300px;
+	--circle-height: calc(var(--circle-width) * 2);
+	--page-height: 700px ;
+}
+
+
+@media (max-width: 640px) {
+	:root{
+		--circle-width: 150px;
+	}
+}
+@media (max-height: 640px) {
+	:root{
+		--circle-width: 100px;
+	}
+}
+
+@keyframes loadingLeft{
+	0% {
+		/*background-color: #003333 ;*/
+		/*background-color: 	#838b83 ;*/
+		background-color: rgba(74, 83, 107, 1);
+		left: 0px ;
+		top: 0px ;
+	}
+	100% {
+		/*background-color: #838b83 ;*/
+		background-color: rgba(74, 83, 107, 1);
+		left: -1000px ;
+		top: 0px ;
+	}	
+}
+@keyframes loadingRight{
+	0% {
+		/*background-color: #8b7765 ;*/
+		/*background-color: #838b83  ;*/
+		background-color: rgba(74, 83, 107, 1);
+		right: 0px ;
+		top: 0px ;
+	}
+	100% {
+		/*background-color: #838b83  ;*/
+		background-color: rgba(74, 83, 107, 1);
+		right: -1000px ;
+		top: 0px ;
+	}	
+}
+
+#loadLeft {
+	/*background-color: #838b83 ;*/
+	background-color: rgba(74, 83, 107, 1);
+	position: fixed ;
+	left: 0px ;
+	top: 0px ;
+	width: 50% ;
+	height: 100% ;
+	z-index: 1000 ;
+	text-align: right ;
+	line-height: calc(var(--circle-width)*2) ;
+	font-size: 100px ;
+	font-family: courier ;
+	color: white ;
+	/*background-size: 150px;*/
+	animation: loadingLeft 4s 1s 1 ;
+	animation-fill-mode: forwards;
+}
+
+#loadRight {
+	/*background-color: #838b83 ;*/
+	background-color: rgba(74, 83, 107, 1);
+	position: fixed;
+	right: 0px ;
+	top: 0px ;
+	width: 50% ;
+	height: 100% ;
+	z-index: 1000 ;
+	line-height: calc(var(--circle-width)*2) ;
+	font-size: 100px ;
+	font-family: courier ;
+	color: white ;
+	animation: loadingRight 4s 1s 1 ;
+	animation-fill-mode: forwards;
+}
+
+body {
+	background-color: rgba(255, 255, 255, 1) ;
+	
+}
+
+.circle {
+	display: block;
+	/*background-color: rgba(44, 53, 57, 1);*/
+  	
+  
+  	width: calc(var(--circle-height)) ;
+  	height: calc(var(--circle-height)) ;
+	position: absolute;
+	left:50%;
+  	top: 50%;
+
+  	margin: -300px 0 0 -300px ;
+	font-family: courier ;
+}
+
+
+.semi-circle-left {
+	display: inline-block;
+	background-color: rgba(74, 83, 107, 1) ;
+  	width: var(--circle-width);
+  	height: var(--circle-height);
+  	border-radius: var(--circle-height) 0 0 var(--circle-height);
+	
+	text-align: center ;
+	line-height: calc(var(--circle-width)*2) ;
+	font-family: courier ;
+	font-size: 25px ;
+	color: rgb(74, 83, 107) ;
+	z-index: 10 ;
+}
+
+.semi-circle-left:hover {
+	background-color: rgba(255,255,255,.7) ;
+	color: rgba(0, 0, 0, 1) ;
+	
+	transition: all 0.5s 0s ease-in ;
+}
+
+
+.semi-circle-right {
+	display: inline-block ;
+	background-color: rgba(74, 83, 107, 1);
+	width: var(--circle-width) ;
+	height: var(--circle-height) ;
+ 	border-radius: 0 var(--circle-height) var(--circle-height) 0;
+	
+	text-align: center ;
+	line-height: calc(var(--circle-width)*2) ;
+	font-family: courier ;
+	font-size: 25px ;
+	color: rgb(74, 83, 107) ;
+	z-index: 10 ;
+}
+
+.semi-circle-right:hover {
+	background-color: rgba(255,255,255,.7) ;
+	color: rgba(0, 0, 0, 1) ;
+	transition: all 0.5s 0s ease-in ;
+}
+
+#frontImage{
+	position: absolute;
+	left: 140px ;
+  	top: 30px ;
+  	z-index: -2;
+}
+#frontImage2{
+	position: absolute;
+	left: 600px ;
+  	top: 200px ;
+  	z-index: -2;
+}
+
+#page1 {
+	background-color: rgba(255, 255, 255, 1) ;
+	position:relative ;
+	height: 700px ;
+	top: 900px ;
+}
+
+#page2 {
+	background-color: rgba(255, 255, 255, 1) ;
+	/*background-color:green;*/
+	position:relative ;
+	height: 700px ;
+	top: 1000px ;
+	
+}
+
+#aboutCircle {
+	position: absolute;
+	background-color: rgba(74, 83, 107, 1);
+	color: rgb(255,255,255) ;
+	left: 22%;
+  	top: 50%;
+
+  	margin: -300px 0 0 -300px ;
+}
+#headShot{
+	position:absolute ;
+	right: 100px;
+	top: 80px ;
+}
+
+#aboutImage{
+	position: absolute;
+	left: 90px ;
+  	top: 0px ;
+  	z-index: 0;
+  	opacity: 0.5;
+
+}
+
+#workCircle {
+	
+	position:absolute ;
+	background-color: rgba(74, 83, 107, 1);
+	left: 101%;
+  	top: 50%;
+  	color: rgb(255,255,255) ;
+  	margin: -300px 0 0 -300px ;
+}
+
+#workImage{
+	position: absolute;
+	right: 90px ;
+  	top: -100px ;
+  	z-index: 0;
+
+}
+
+.text {
+	position: absolute ;
+	/*text-align: center ;*/
+	width: 400px ;
+	height: 200px ;
+	left: 400px ;
+	top: 150px ;
+	font-family: courier ;
+	color: rgba(0, 0, 0,.9) ;
+}
+
+.text2 {
+	position: absolute ;
+	/*text-align: center ;*/
+	width: 400px ;
+	height: 200px ;
+	left: 400px ;
+	top: 320px ;
+	font-family: courier ;
+	color: rgba(0,0,0,.9) ;
+}
+
+.rectangle{
+	width: 400px ;
+	height: 200px ;
+	position: absolute;
+	text-align: center;
+	/*line-height: 200px ;*/
+	font-family: courier ;
+	font-size: 25px ;
+	color: rgb(255,255,255) ;
+	z-index: 10 ;
+}
+
+#rect1{
+	background: red ;
+	left: 15px ;
+	top: 30px ;
+	color: rgb(0,0,0);
+}
+
+#rect2{
+	background: green ;
+	left: 430px ;
+	top: 140px ;
+	color: rgb(0,0,0);
+}
+
+#rect3{
+	background: white ;
+	left: 15px ;
+	top: 270px ;
+	color: rgb(0,0,0);
+}
+
+footer {
+	position: absolute ;
+	bottom: -1700px ;
+	left: 0px ;
+	right: 0px ;
+	width: 100% ;
+	height: 35px ;
+	background-color: rgba(255,250,205,	 .6);
+	z-index: 1000 ;
+
+}
+
+button {
+	width: 60px ;
+	height: 35px ;
+	/*background-color: red ;*/
+	background: transparent;
+	position: absolute ;
+	border: 1px solid rgb(128,128,128);
+	font-family: courier ;
+	font-size: 16px ;
+	color: rgba(0, 0, 0, 1) ;
+	text-align: center;
+	/*text-shadow : 0 0 2px black;*/
+}
+
+button:hover{
+	background-color: rgba(44, 53, 57, 1) ;
+	color: rgba(255, 255, 255, 1) ;
+	transition: all 0.5s 0s ease-in ;
+}
+
+/*#buttonWork{
+	left:130px ;
+	bottom: 0px ;
+}
+
+
+
+#buttonAbout{
+	left:70px ;
+	bottom: 0px ;
+}
+
+#buttonHome{
+	left:10px ;
+	bottom: 0px ;
+}*/
+
+#copyright {
+	position: absolute ;
+	left:50%;
+  	top: 50%;
+}
+
+#email{
+	position: absolute ;
+	right: 10px;
+	text-align: center ;
+	border: 1px solid rgb(128,128,128);
+	font-family: courier ;
+	border-style: none;
+	line-height: 35px ;
+}
+
+#firstPainting{
+	position:absolute ;
+	top:20px ;
+	width: 96px ;
+	height: 110px ;
+}

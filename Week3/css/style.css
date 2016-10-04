@@ -1,0 +1,12 @@
+/*got part of this code from https://developers.google.com/maps/documentation/javascript/tutorial*/
+
+html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+}
+
+#map {
+    height: 75% ;
+    width: 100% ;
+}

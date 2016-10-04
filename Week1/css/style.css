@@ -1,0 +1,101 @@
+
+:root{
+	--circle-width: 50px;
+	--circle-height: calc(var(--circle-width) * 2);
+	--page-height: 700px ;
+}
+
+/*#secondCircle {
+	position: absolute ;
+	top: 300 ;
+	background-color: rgba(255, 0, 0) ;
+
+}
+#thirdCircle {
+	position: absolute ;
+	top: 600 ;
+	background-color: rgba(0, 255, 0) ;
+}*/
+.parentingTwo {
+	position: absolute ;
+	top: 500px ;
+	right: 200px ;
+	background-color: rgba(255, 0, 0, 1) ;
+}
+
+.circle {
+	/*display: block;*/
+	background-color: rgba(44, 53, 57, 1);
+  	
+  
+  	width: calc(var(--circle-height)) ;
+  	height: calc(var(--circle-height)) ;
+	position: absolute;
+	/*left:50%;*/
+  	/*top: 50%;*/
+  	border-radius: var(--circle-height) var(--circle-height) var(--circle-height)  var(--circle-height);
+  	/*margin: -300px 0 0 -300px ;*/
+	font-family: courier ;
+}
+.circleTwo {
+	/*display: block;*/
+	background-color: #8C001A ;
+  	
+  
+  	width: calc(var(--circle-height)) ;
+  	height: calc(var(--circle-height)) ;
+	position: absolute;
+	/*left:50%;*/
+  	/*top: 50%;*/
+  	border-radius: var(--circle-height) var(--circle-height) var(--circle-height)  var(--circle-height);
+  	/*margin: -300px 0 0 -300px ;*/
+	font-family: courier ;
+}
+
+
+.leftSide {
+	display: inline-block;
+	background-color: rgba(74, 83, 107, 1) ;
+  	width: var(--circle-width);
+  	height: var(--circle-height);
+  	border-radius: var(--circle-height) 0 0 var(--circle-height);
+	
+	text-align: center ;
+	line-height: calc(var(--circle-width)*2) ;
+	font-family: courier ;
+	font-size: 25px ;
+	color: rgb(74, 83, 107) ;
+	z-index: 10 ;
+}
+
+.leftSideTwo {
+	display: inline-block;
+	background-color: #FFCBA4 ;
+  	width: var(--circle-width);
+  	height: var(--circle-height);
+  	border-radius: var(--circle-height) 0 0 var(--circle-height);
+	
+	text-align: center ;
+	line-height: calc(var(--circle-width)*2) ;
+	font-family: courier ;
+	font-size: 25px ;
+	color: rgb(74, 83, 107) ;
+	z-index: 10 ;
+}
+
+
+.rightSide {
+	display: inline-block ;
+	background-color: rgba(74, 83, 107, 1);
+	width: var(--circle-width) ;
+	height: var(--circle-height) ;
+ 	border-radius: 0 var(--circle-height) var(--circle-height) 0;
+	
+	text-align: center ;
+	line-height: calc(var(--circle-width)*2) ;
+	font-family: courier ;
+	font-size: 25px ;
+	color: rgb(74, 83, 107) ;
+	z-index: 10 ;
+}
+
