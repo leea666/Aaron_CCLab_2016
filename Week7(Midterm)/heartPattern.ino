@@ -1,0 +1,113 @@
+//Aaron Lee
+//Midterm for CC Lab 2016
+//I used this tutorial for schematics and code:
+//http://www.electroschematics.com/10510/arduino-8-8-led-matrix/
+//I added a button so the user can turn on the LEDs when they desire
+
+int debounceWait = 10 ;
+int blinkWaitTime = 5000 ;
+unsigned long lastBlinkTime = 0 ;
+int buttonPin = 5 ;
+bool stateLEDMatrix = false ;
+
+
+unsigned char i;
+unsigned char j = 0; 
+ 
+int Max7219_pinCLK = 10;
+int Max7219_pinCS = 9;
+int Max7219_pinDIN = 8;
+ 
+unsigned char disp1[19][8]={
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // Heart Pattern
+  0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x00, 0x40, 0x40, 0x00, 0x00, 0x00, 
+  0x00, 0x00, 0x80, 0x40, 0x40, 0x00, 0x00, 0x00, 
+  0x00, 0x80, 0x80, 0x40, 0x40, 0x00, 0x00, 0x00, 
+  0x40, 0x80, 0x80, 0x40, 0x40, 0x00, 0x00, 0x00, 
+  0x60, 0x80, 0x80, 0x40, 0x40, 0x00, 0x00, 0x00, 
+  0x60, 0x90, 0x80, 0x40, 0x40, 0x00, 0x00, 0x00, 
+  0x60, 0x90, 0x88, 0x40, 0x40, 0x00, 0x00, 0x00, 
+  0x60, 0x90, 0x88, 0x44, 0x40, 0x00, 0x00, 0x00, 
+  0x60, 0x90, 0x88, 0x44, 0x44, 0x00, 0x00, 0x00, 
+  0x60, 0x90, 0x88, 0x44, 0x44, 0x08, 0x00, 0x00, 
+  0x60, 0x90, 0x88, 0x44, 0x44, 0x08, 0x10, 0x00, 
+  0x60, 0x90, 0x88, 0x44, 0x44, 0x08, 0x10, 0x20, 
+  0x60, 0x90, 0x88, 0x44, 0x44, 0x08, 0x10, 0x60, 
+  0x60, 0x90, 0x88, 0x44, 0x44, 0x08, 0x90, 0x60, 
+  0x60, 0x90, 0x88, 0x44, 0x44, 0x88, 0x90, 0x60, // Heart Pattern
+ 
+};
+ 
+void Write_Max7219_byte(unsigned char DATA) 
+{   
+  unsigned char i;
+  digitalWrite(Max7219_pinCS,LOW);  
+  for(i=8;i>=1;i--)
+  {    
+    digitalWrite(Max7219_pinCLK,LOW);
+    digitalWrite(Max7219_pinDIN,DATA&0x80);
+    DATA = DATA<<1;
+    digitalWrite(Max7219_pinCLK,HIGH);
+  }                                 
+}
+ 
+void Write_Max7219(unsigned char address,unsigned char dat)
+{
+  digitalWrite(Max7219_pinCS,LOW);
+  Write_Max7219_byte(address);          
+  Write_Max7219_byte(dat);               
+  digitalWrite(Max7219_pinCS,HIGH);
+}
+ 
+void Init_MAX7219(void)
+{
+  Write_Max7219(0x09, 0x00);      
+  Write_Max7219(0x0a, 0x03);      
+  Write_Max7219(0x0b, 0x07);       
+  Write_Max7219(0x0c, 0x01);      
+  Write_Max7219(0x0f, 0x00);      
+}
+ 
+void setup()
+{
+  Serial.begin(9600) ;
+  pinMode(Max7219_pinCLK,OUTPUT);
+  pinMode(Max7219_pinCS,OUTPUT);
+  pinMode(Max7219_pinDIN,OUTPUT);
+  delay(50);
+  Init_MAX7219();
+
+  pinMode(buttonPin, INPUT_PULLUP) ;
+}
+ 
+void loop()
+{ 
+
+  int oldButtonVal = digitalRead(buttonPin) ;
+  delay(debounceWait) ;
+  int newButtonVal = digitalRead(buttonPin) ;
+
+  if(oldButtonVal != newButtonVal) {
+    if(newButtonVal == LOW) {
+      stateLEDMatrix = true ;
+      j = 0 ;
+    } else {
+      
+    }
+  }
+  if(stateLEDMatrix == true) {
+    if(millis() - lastBlinkTime > blinkWaitTime && j < 19) {
+      for(i=1;i<9;i++) {
+        Write_Max7219(i,disp1[j][i-1]);
+       }
+      j++ ;
+      lastBlinkTime = millis() ;
+    }
+  }
+
+  
+   
+}
+ 
+
