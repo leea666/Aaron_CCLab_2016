@@ -1,3 +1,7 @@
+//Aaron Lee
+//Borrow part of the example code that came with the ZX sensor
+//The example called I2C_Gesture_Interrupt
+
 #include <Wire.h>
 #include <ZX_Sensor.h>
 #include <Servo.h>
